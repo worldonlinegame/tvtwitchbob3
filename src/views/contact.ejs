@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <%- include('partials/head') %>
+</head>
+
+<body>
+    <%- include('partials/navigation') %>
+
+
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+            <div class="card bg-dark text-white text-center">
+                <div class="card-header">
+                    <h1>Contact:</h1>
+                </div>
+                <div class="card-body text-start">
+                    <form action="" id="form">
+                        <div class="mb-3">
+                        <label for="subject">Asunto:</label>
+                        <input form="subject" placeholder="Asunto..." class="form-control">
+                        </div>
+                        <div class="mb-3">
+                        <label for="mesage">Mensaje:</label>
+                        <textarea name="message" form="mesage" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <a id="emailA"></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
+</body>
+<script>
+    const form = document.getElementById('form');
+    const sendMail = document.getElementById('emailA');
+    function handleSendEmail(event) {
+       // event.preventDefault();
+        const fd = new FormData(this);
+        
+
+      sendMail.setAttribute(
+        'href',
+        `mailTo:motar3000@hotmail.com?subject=${fd.get('subject')}?&body=${fd.get('message')}`
+      
+    )
+      
+     sendMail.click()
+    }
+
+    form.addEventListener('submit', handleSendEmail)
+    
+    
+
+    
+</script>
+
+</html>
